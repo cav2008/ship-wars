@@ -1,0 +1,28 @@
+{
+  "name": "ship-wars",
+  "version": "1.0.0",
+  "description": "Javascript battleship",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cavan88/ship-wars.git"
+  },
+  "author": "Cavan Law",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cavan88/ship-wars/issues"
+  },
+  "homepage": "https://github.com/cavan88/ship-wars",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-csslint": "^0.1.5",
+    "gulp-jshint": "^1.10.0",
+    "gulp-less": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}
