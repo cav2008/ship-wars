@@ -7,10 +7,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
         <!-- dev javascript files -->
-        <script src="js/square.js"></script>
-        <script src="js/board.js"></script>
-        <script src="js/game.js"></script>
-        <script src="js/shipwars.js"></script>
+        <script src="js/model/square.js"></script>
+        <script src="js/model/board.js"></script>
+        <script src="js/model/player.js"></script>
+        <script src="js/model/game.js"></script>
+        <script src="js/model/weapon.js"></script>
+        <script src="js/controller/shipwars.js"></script>
 
         <!-- production javascript file -->
         <!-- <script src="js/app.min.js"></script> -->
@@ -152,7 +154,11 @@
                 </div>
             </div>
 
-            <div class="controls col-sm-2"></div>
+            <div class="controls col-sm-2">
+                <div class="weapons">
+                    <p>Torpedoes: <span class="tNumber"></span></p>
+                </div>
+            </div>
         </section>
 
         <footer></footer>

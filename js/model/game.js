@@ -5,15 +5,25 @@ var APP = (function(module) {
     function Game() {
         // Private variables
         var _board;
+        var _player;
+        var _weapon;
 
         // Sets up a default game
         this.setupGame = function() {
             _board = new module.Board(10);
+
+            _weapon = new module.Weapon('torpedo', 30);
+
+            _player = new module.Player(1, false, _weapon);
         }
 
          // Get a board
         this.getBoard = function() {
             return _board;
+        }
+
+        this.getPlayer = function() {
+            return _player;
         }
 
         this.setupGame();
