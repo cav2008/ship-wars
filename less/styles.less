@@ -13,6 +13,7 @@
     width: 408px;
     border: 4px solid black;
     border-radius: 3px;
+    margin: auto;
 }
 
 // square rows
@@ -29,11 +30,26 @@
     width: 40px;
     background-color: @lightBlue;
     border: 1px solid white;
+
+    &:hover {
+        cursor: url(../img/target.svg) 10 15, auto;
+    }
+}
+
+.hit {
+    background-color: @red;
+}
+
+.miss {
+    background-color: @blue;
 }
 
 // control sidebar
 // ----------------------
 .controls {
     background-color: grey;
-    height: 500px;
+
+    .destroyed {
+        text-decoration: line-through;
+    }
 }

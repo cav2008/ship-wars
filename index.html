@@ -2,9 +2,14 @@
 <html>
     <head>
         <title>Ship wars Javascript game</title>
-        <!-- javascripts -->
+        <!-- library javascripts -->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+        <!-- temporary libraries -->
+        <script src="temp_lib/jquery-2.1.4.js"></script>
+        <script src="temp_lib/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="temp_lib/bootstrap-3.3.4-dist/css/bootstrap.min.css"></script>
 
         <!-- dev javascript files -->
         <script src="js/model/square.js"></script>
@@ -12,6 +17,7 @@
         <script src="js/model/player.js"></script>
         <script src="js/model/game.js"></script>
         <script src="js/model/weapon.js"></script>
+        <script src="js/model/ship.js"></script>
         <script src="js/controller/shipwars.js"></script>
 
         <!-- production javascript file -->
@@ -28,8 +34,8 @@
             <h2>The worlds best navy simulator</h2>
         </header>
 
-        <section class="main-body row">
-            <div class="col-sm-10">
+        <section class="main-body">
+            <div class="col-sm-12 row">
                 <div class="board">
                     <div class="square-row">
                         <div class="square" data-id="0"></div>
@@ -76,7 +82,7 @@
                         <div class="square" data-id="35"></div>
                         <div class="square" data-id="36"></div>
                         <div class="square" data-id="37"></div>
-                        <div class="square" data-id="37"></div>
+                        <div class="square" data-id="38"></div>
                         <div class="square" data-id="39"></div>
                     </div>
                     <div class="square-row">
@@ -153,10 +159,46 @@
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="controls col-sm-2">
-                <div class="weapons">
-                    <p>Torpedoes: <span class="tNumber"></span></p>
+        <section>
+            <div class="col-md-12 row">
+                <div class="controls">
+                    <div class="weapons">
+                        <p>Torpedoes: <span class="tNumber"></span></p>
+                    </div>
+                    <div class="ships">
+                        <h4>Ships</h4>
+                        <p class="ship ship-0"></p>
+                        <p class="ship ship-1"></p>
+                        <p class="ship ship-2"></p>
+                        <p class="ship ship-3"></p>
+                        <p class="ship ship-4"></p>
+                        <p class="ship ship-5"></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">Reset Game</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Reset Game</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want restart the game?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="reset-btn btn btn-primary">Yes, Captain!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
