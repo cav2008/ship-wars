@@ -50,6 +50,8 @@ $(document).ready(function(){
         // check game over and display message
         if(game.checkGameOver() === 'WIN' || game.checkGameOver() === 'LOSE') {
             if(game.checkGameOver() === 'WIN') {
+                var audio = new Audio('dist/sound/urf-win.mp3');
+                audio.play();
                 window.alert('You win! You are the captain now!');
             }
             else {

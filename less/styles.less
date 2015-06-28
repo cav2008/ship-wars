@@ -1,10 +1,11 @@
 // imports
 @import 'variables.less';
 
-// main body
+// main and control sections
 // ----------------------
-.main-body {
-    margin-top: 20px;
+.main-section, .control-section {
+    margin: 20px 0;
+    overflow: auto;
 }
 
 // board
@@ -14,6 +15,10 @@
     border: 4px solid black;
     border-radius: 3px;
     margin: auto;
+
+    &:hover {
+        cursor: url(../img/target.svg) 10 15, auto;
+    }
 }
 
 // square rows
@@ -32,23 +37,49 @@
     border: 1px solid white;
 
     &:hover {
-        cursor: url(../img/target.svg) 10 15, auto;
+        background-color: @blue;
     }
 }
 
 .hit {
     background-color: @red;
+
+    &:hover {
+        background-color: @red;
+    }
 }
 
 .miss {
-    background-color: @blue;
+    background-color: @darkBlue;
+
+    &:hover {
+        background-color: @darkBlue;
+    }
 }
 
-// control sidebar
+// Control
 // ----------------------
-.controls {
-    background-color: grey;
+.control-section {
+    .tab-pane {
+        min-height: 250px;
+        border-bottom: 1px solid @grey;
+        overflow: auto;
+        padding: 20px 10px;
 
+        h4 {
+            font-size: 21px;
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+// bridge control
+// ----------------------
+.bridge-control {
     .destroyed {
         text-decoration: line-through;
     }
