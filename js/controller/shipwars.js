@@ -6,6 +6,8 @@ $(document).ready(function(){
     var board = game.getBoard();
     var player = game.getPlayer();
 
+    init();
+
     renderToolbar();
 
     // Event listener function for clicking on square
@@ -31,7 +33,7 @@ $(document).ready(function(){
                 var shipSunk = occupiedShip.alertDestroyed();
                 if(shipSunk) {
                     window.alert(shipSunk);
-                    var toolbarShipSel = '.ship-' + square.getShipId();
+                    var toolbarShipSel = '.ship-' + square.getShipId() + ' .ship-name';
                     $(toolbarShipSel).addClass('destroyed');
                 }
             }
@@ -69,10 +71,13 @@ $(document).ready(function(){
 
         console.log('all ships: ', ships);
 
+        // Setting enemy ship names and hp
         for(var i = 0; i < ships.length; i++) {
             var shipSelector = '.ship-' + ships[i].getId();
 
-            $(shipSelector).text(game.getShip(i).getName());
+            $(shipSelector + ' .ship-name').text(game.getShip(i).getName());
+
+            $(shipSelector + ' .ship-hp-now').text(game.getShip(i).getHitPoint());
         }
     }
 
@@ -80,4 +85,18 @@ $(document).ready(function(){
         console.log('game reset');
         window.location.reload();
     });
+
+    // initialise function
+    function init() {
+        var ships = game.getShips();
+
+        // Setting enemy ship max hp
+        for(var i = 0; i < ships.length; i++) {
+            var shipSelector = '.ship-' + ships[i].getId();
+
+            $(shipSelector + ' .ship-hp-max').text(game.getShip(i).getHitPoint());
+
+
+        }
+    }
 });
