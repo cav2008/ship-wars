@@ -7,6 +7,7 @@ var APP = (function(module) {
         // private variables
         var _id = id;
         var _name = name;
+        var _maxHP = hp;
         var _hitPoint = hp;
         var _horizontal = false;
         var _alert = false;
@@ -34,6 +35,10 @@ var APP = (function(module) {
 
         this.getHorizontal = function() {
             return _horizontal;
+        }
+
+        this.getMaxHP = function() {
+            return _maxHP;
         }
 
         this.alertDestroyed = function() {

@@ -53,3 +53,6 @@
 .bridge-control .destroyed {
   text-decoration: line-through;
 }
+.option-control {
+  text-align: center;
+}

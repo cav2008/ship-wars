@@ -17,7 +17,7 @@ $(document).ready(function(){
 
         console.log(square.getId());
 
-        // check if all ready fired
+        // check if already fired
         if(!square.getClicked()) {
             square.reveal();
             player.fire('torpedo');

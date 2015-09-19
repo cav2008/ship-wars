@@ -29,7 +29,7 @@ var APP = (function(module) {
         this.setupGame = function() {
             _board = new module.Board(10);
 
-            _weapon = new module.Weapon('torpedo', 60);
+            _weapon = new module.Weapon('torpedo', 50);
 
             _player = new module.Player(1, false, _weapon);
 
