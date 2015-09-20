@@ -78,6 +78,19 @@ $(document).ready(function(){
             $(shipSelector + ' .ship-name').text(game.getShip(i).getName());
 
             $(shipSelector + ' .ship-hp-now').text(game.getShip(i).getHitPoint());
+
+            // Calculating ship hp percentage
+            var percentage = (ships[i].getHitPoint() / ships[i].getMaxHP()) * 100;
+
+            // If the ship has run out of health, then fill the health bar to red
+            if(percentage === 0) {
+                $(shipSelector + ' .progress-bar').width('100%')
+                    .addClass('progress-bar-danger')
+                    .removeClass('progress-bar-success');
+            }
+            else {
+                $(shipSelector + ' .progress-bar').width(percentage + '%');
+            }
         }
     }
 
