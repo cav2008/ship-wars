@@ -5,6 +5,7 @@ $(document).ready(function(){
     var game = new APP.Game();
     var board = game.getBoard();
     var player = game.getPlayer();
+    var sound = new APP.Sound();
 
     init();
 
@@ -22,24 +23,28 @@ $(document).ready(function(){
             square.reveal();
             player.fire('torpedo');
 
+            // ship hit
             if(square.getOccupied() === true) {
                 var occupiedShip = game.getShip(square.getShipId());
                 console.log('hit');
                 // get the ship id from the square and reduce that ship's hp
                 occupiedShip.reduceHitPoint();
                 $(this).addClass('hit');
+                sound.hitSound();
 
                 // let user know if ship is destroyed or not
                 var shipSunk = occupiedShip.alertDestroyed();
                 if(shipSunk) {
-                    window.alert(shipSunk);
                     var toolbarShipSel = '.ship-' + square.getShipId() + ' .ship-name';
                     $(toolbarShipSel).addClass('destroyed');
+                    sound.destroyedSound();
                 }
             }
+            // missed
             else {
                 console.log('missed');
                 $(this).addClass('miss');
+                sound.missSound();
             }
         }
         else {
@@ -52,12 +57,12 @@ $(document).ready(function(){
         // check game over and display message
         if(game.checkGameOver() === 'WIN' || game.checkGameOver() === 'LOSE') {
             if(game.checkGameOver() === 'WIN') {
-                var audio = new Audio('dist/sound/urf-win.mp3');
-                audio.play();
+                sound.winSound();
                 window.alert('You win! You are the captain now!');
             }
             else {
                 window.alert('You Lose! (and you suck)');
+                sound.gameOverSound();
             }
         }
     });
