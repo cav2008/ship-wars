@@ -58,10 +58,8 @@ var APP = (function(module) {
                 while(!successfulSet) {
                     // get random start square
                     var startSquare = randomStart();
-                    console.log('random start point at: ', startSquare);
 
                     successfulSet = this.setShipLocation(startSquare, shipId);
-                    console.log('placed successfully: ', successfulSet);
                 }
             }
         }
@@ -74,10 +72,8 @@ var APP = (function(module) {
          */
         this.setShipLocation = function(squareId, shipId) {
             var locations = getShipLocationsFunc(squareId, shipId);
-            console.log('locations: ', locations);
 
             // check if the locations are already taken up or not
-            console.log('checking taken: ', checkLocationsTakenFunc(locations));
             if(checkLocationsTakenFunc(locations) === false) {
                 // setting the squares
                 for(var i = 0; i < locations.length; i++) {
@@ -88,8 +84,6 @@ var APP = (function(module) {
                 return true;
             }
             else {
-                console.log('Move bitch, get out of the way');
-
                 return false;
             }
         }
@@ -120,8 +114,6 @@ var APP = (function(module) {
                     return placeSquares;
                 }
                 else {
-                    console.log('No space to place ship');
-
                     return placeSquares;
                 }
             }
@@ -140,8 +132,6 @@ var APP = (function(module) {
                     return placeSquares;
                 }
                 else {
-                    console.log('No space to place ship');
-
                     return placeSquares;
                 }
             }
@@ -171,7 +161,6 @@ var APP = (function(module) {
         }
 
         this.checkGameOver = function() {
-            console.log('checking game over');
             var ammo = this.getPlayer().getTorp().getAmmo();
 
             // assume all ships are destroyed
@@ -179,14 +168,11 @@ var APP = (function(module) {
 
             for(var i = 0; i < _ships.length; i++) {
                 // if there is a ship with hp then it is alive and break loop
-                console.log('ship health: ', _ships[i].getName(),  _ships[i].getHitPoint());
                 if(_ships[i].getHitPoint() !== 0) {
                     shipsAlive = true;
                     break;
                 }
             }
-
-            console.log('ships alive :', shipsAlive);
 
             // lose
             if(ammo === 0 && shipsAlive === true) {
