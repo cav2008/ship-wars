@@ -6,6 +6,10 @@ $(document).ready(function(){
     var board = game.getBoard();
     var player = game.getPlayer();
     var sound = new APP.Sound();
+    var stats = new APP.Stats();
+
+    var combo = 0;
+    var currentCombo = 0;
 
     init();
 
@@ -39,12 +43,23 @@ $(document).ready(function(){
                     $(toolbarShipSel).addClass('destroyed');
                     sound.destroyedSound();
                 }
+
+                // add combo
+                currentCombo++;
             }
             // missed
             else {
                 console.log('missed');
                 $(this).addClass('miss');
                 sound.missSound();
+
+                // save if current combo streak is higher
+                if(currentCombo > combo) {
+                    combo = currentCombo;
+                }
+
+                // combo breakkkkkerrrr
+                currentCombo = 0;
             }
         }
         else {
@@ -56,14 +71,20 @@ $(document).ready(function(){
 
         // check game over and display message
         if(game.checkGameOver() === 'WIN' || game.checkGameOver() === 'LOSE') {
+            var ammoLeft = (50 - player.getTorp().getAmmo());
+
             if(game.checkGameOver() === 'WIN') {
                 sound.winSound();
                 window.alert('You win! You are the captain now!');
+                stats.save(ammoLeft, 'win', combo);
             }
             else {
                 window.alert('You Lose! (and you suck)');
                 sound.gameOverSound();
+                stats.save(ammoLeft, 'lose', combo);
             }
+
+            renderHighScores();
         }
     });
 
@@ -99,6 +120,16 @@ $(document).ready(function(){
         }
     }
 
+    // Function to render highscores
+    function renderHighScores() {
+        // Set up highscores
+        $('.lowest-torp-fire').text(stats.getLowestTorpFire());
+        $('.games-won').text(stats.getGamesWon());
+        $('.games-lost').text(stats.getGamesLost());
+        $('.combo').text(stats.getCombo());
+    }
+
+    // Reset game button
     $('.reset-btn').click(function() {
         console.log('game reset');
         window.location.reload();
@@ -113,8 +144,8 @@ $(document).ready(function(){
             var shipSelector = '.ship-' + ships[i].getId();
 
             $(shipSelector + ' .ship-hp-max').text(game.getShip(i).getHitPoint());
-
-
         }
+
+        renderHighScores();
     }
 });

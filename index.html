@@ -19,6 +19,7 @@
         <script src="js/model/weapon.js"></script>
         <script src="js/model/ship.js"></script>
         <script src="js/model/sound.js"></script>
+        <script src="js/model/stats.js"></script>
         <script src="js/controller/shipwars.js"></script>
 
         <!-- production javascript file -->
@@ -166,7 +167,7 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#bridge" aria-controls="bridge" role="tab" data-toggle="tab">Ship Bridge</a></li>
                     <li role="presentation"><a href="#option" aria-controls="option" role="tab" data-toggle="tab">Options</a></li>
-                    <li class="disabled" role="presentation"><a href="#high-score" aria-controls="high-score" role="tab" data-toggle="tab">High Score</a></li>
+                    <li role="presentation"><a href="#high-score" aria-controls="high-score" role="tab" data-toggle="tab">High Score</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -268,6 +269,25 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="option-control tab-pane" id="high-score">
+                        <div class="row">
+                            <h3 class="col-md-5">Lowest Torpedoes Used: </h3>
+                            <h3 class="col-md-5 lowest-torp-fire"></h3>
+                        </div>
+                        <div class="row">
+                            <h3 class="col-md-5">Games Won: </h3>
+                            <h3 class="col-md-5 games-won"></h3>
+                        </div>
+                        <div class="row">
+                            <h3 class="col-md-5">Games Lost: </h3>
+                            <h3 class="col-md-5 games-lost"></h3>
+                        </div>
+                        <div class="row">
+                            <h3 class="col-md-5">Combo Streak: </h3>
+                            <h3 class="col-md-5 combo"></h3>
                         </div>
                     </div>
 
