@@ -28,12 +28,29 @@ var APP = (function(module) {
             if(combo > _comboBreaker) {
                 write('combo', combo);
             }
+
+            fetchData();
         }
 
         /**
-         * Function that writes to local storage
+         * Function to load
          */
         function load() {
+            fetchData();
+
+            // Set up initial scores if load fail
+            if(_lowestTorpFire == null) {
+                write('fire', 50);
+                write('won', 0);
+                write('lost', 0);
+                write('combo', 0);
+            }
+        }
+
+        /**
+         * Function that gets scores from local storage
+         */
+        function fetchData() {
             _lowestTorpFire = localStorage.getItem('fire');
             _gamesWon = localStorage.getItem('won');
             _gamesLost = localStorage.getItem('lost');
