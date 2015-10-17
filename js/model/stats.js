@@ -3,7 +3,6 @@ var APP = (function(module) {
 
     // Constructor function
     function Stats() {
-        var _lowestTorpFire;
         var _gamesWon;
         var _gamesLost;
         var _comboBreaker;
@@ -14,10 +13,6 @@ var APP = (function(module) {
          * Public method to save highscore if necessary
          */
         this.save = function(torp, outcome, combo) {
-            if(torp < _lowestTorpFire) {
-                write('fire', torp);
-            }
-
             if(outcome === 'win') {
                 write('won', ++_gamesWon);
             }
@@ -39,7 +34,7 @@ var APP = (function(module) {
             fetchData();
 
             // Set up initial scores if load fail
-            if(_lowestTorpFire == null) {
+            if(_comboBreaker == null) {
                 write('fire', 50);
                 write('won', 0);
                 write('lost', 0);
@@ -51,7 +46,6 @@ var APP = (function(module) {
          * Function that gets scores from local storage
          */
         function fetchData() {
-            _lowestTorpFire = localStorage.getItem('fire');
             _gamesWon = localStorage.getItem('won');
             _gamesLost = localStorage.getItem('lost');
             _comboBreaker = localStorage.getItem('combo');
@@ -59,10 +53,6 @@ var APP = (function(module) {
 
         function write(key, value) {
             localStorage.setItem(key, value);
-        }
-
-        this.getLowestTorpFire = function() {
-            return _lowestTorpFire;
         }
 
         this.getGamesWon = function() {
