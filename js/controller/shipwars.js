@@ -67,17 +67,16 @@ $(document).ready(function(){
 
         // check game over and display message
         if(game.checkGameOver() === 'WIN' || game.checkGameOver() === 'LOSE') {
-            var ammoLeft = (50 - player.getTorp().getAmmo());
 
             if(game.checkGameOver() === 'WIN') {
                 sound.winSound();
                 window.alert('You win! You are the captain now!');
-                stats.save(ammoLeft, 'win', combo);
+                stats.save('win', combo);
             }
             else {
                 window.alert('You Lose! (and you suck)');
                 sound.gameOverSound();
-                stats.save(ammoLeft, 'lose', combo);
+                stats.save('lose', combo);
             }
 
             renderHighScores();
