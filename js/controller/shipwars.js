@@ -116,7 +116,6 @@ $(document).ready(function(){
     // Function to render highscores
     function renderHighScores() {
         // Set up highscores
-        $('.lowest-torp-fire').text(stats.getLowestTorpFire());
         $('.games-won').text(stats.getGamesWon());
         $('.games-lost').text(stats.getGamesLost());
         $('.combo').text(stats.getCombo());
