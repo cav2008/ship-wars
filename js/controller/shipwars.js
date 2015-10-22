@@ -59,7 +59,7 @@ $(document).ready(function(){
             }
         }
         else {
-            console.log('You already fired there fool!');
+            console.log('You already fired there');
         }
 
         // Update toobar
