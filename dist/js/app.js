@@ -59,7 +59,7 @@ $(document).ready(function(){
             }
         }
         else {
-            console.log('You already fired there fool!');
+            console.log('You already fired there');
         }
 
         // Update toobar
@@ -592,7 +592,7 @@ var APP = (function(module) {
         /**
          * Public method to save highscore if necessary
          */
-        this.save = function(torp, outcome, combo) {
+        this.save = function(outcome, combo) {
             if(outcome === 'win') {
                 write('won', ++_gamesWon);
             }
@@ -615,7 +615,6 @@ var APP = (function(module) {
 
             // Set up initial scores if load fail
             if(_comboBreaker == null) {
-                write('fire', 50);
                 write('won', 0);
                 write('lost', 0);
                 write('combo', 0);
